@@ -18,8 +18,12 @@ function connect_ws($ip, $port, $token) {
     echo "[NyaBot]好哦,连接成功啦!". PHP_EOL;
     return $client;
 }
-require './inc/core.php';
-require './inc/function.php';
+require './inc/core.class.php';
+$list = glob('./class/*.php');
+    foreach ($list as $file) {
+        $file = explode('/', $file)['2'];
+        require './class/' . $file;
+    }
 echo"[NyaBot]核心库/全局函数加载成功啦!". PHP_EOL;
 echo"[NyaBot]正在连接WS服务器ing..". PHP_EOL;
 run(function () use ($ip,$port,$token){

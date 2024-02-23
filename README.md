@@ -43,8 +43,9 @@ git clone https://github.com/Mxmilu666/NyaBot.git
 |-- bot.php //主程序
 |-- inc
 |   |-- config.php //配置文件
-|   |-- core.php //核心函数
-|   `-- function.php //全局变量
+|   `-- core.class.php //核心函数
+|-- class
+|   `-- example.class.php //全局函数示例
 `-- plugins
     `-- example.php //简单的示例(等我有空了补一个详细的(因为懒))
 
