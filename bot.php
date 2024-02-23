@@ -19,7 +19,7 @@ function connect_ws($ip, $port, $token) {
     return $client;
 }
 require './inc/core.class.php';
-$list = glob('./class/*.php');
+$list = glob('./class/*.class.php');
     foreach ($list as $file) {
         $file = explode('/', $file)['2'];
         require './class/' . $file;
