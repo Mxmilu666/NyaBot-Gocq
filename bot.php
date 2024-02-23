@@ -15,10 +15,6 @@ function connect_ws($ip, $port, $token) {
         echo "[NyaBot]呜呜呜连接WS服务器怎么失败了! 错误原因：" . $client->errCode . PHP_EOL;
         return false;
     }
-    elseif (!$client->getStatusCode() != '403') {
-        echo "[NyaBot]Token错误啦,检测一下吧";
-        return false;
-    }
     echo "[NyaBot]好哦,连接成功啦!". PHP_EOL;
     return $client;
 }
@@ -47,7 +43,7 @@ run(function () use ($ip,$port,$token){
                     case 'meta_event'://心跳通知
                         //echo '心跳：' . $op_data['time'] . PHP_EOL;
                         break;
-                    case 'notice'://群通知
+                    case 'notice'://群通知s
                         break;
                     case 'request'://好友通知
                         break;
