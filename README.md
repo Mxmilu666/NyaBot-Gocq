@@ -57,4 +57,4 @@ git clone https://github.com/Mxmilu666/NyaBot.git
 [Swoole](https://www.swoole.com/)提供的高性能PHP协程框架
 [1626424216](https://github.com/1626424216)提供的大部分框架代码
 
-### ~~~这个项目只是开源我正在使用的框架,不一定可以满足所有人的需求,但是欢迎大家Pr(~~~
+### 这个项目只是开源我正在使用的框架,不一定可以满足所有人的需求,但是欢迎大家Pr(逃
