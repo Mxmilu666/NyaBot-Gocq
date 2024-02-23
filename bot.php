@@ -15,6 +15,10 @@ function connect_ws($ip, $port, $token) {
         echo "[NyaBot]呜呜呜连接WS服务器怎么失败了! 错误原因：" . $client->errCode . PHP_EOL;
         return false;
     }
+    elseif (!$client->getStatusCode() != '403') {
+        echo "[NyaBot]Token错误啦,检测一下吧";
+        return false;
+    }
     echo "[NyaBot]好哦,连接成功啦!". PHP_EOL;
     return $client;
 }

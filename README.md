@@ -29,7 +29,7 @@ _✨ 基于PHP以及 [Swoole](https://www.swoole.com/) 的 [go-cqhttp](https://g
 ``` code
 git clone https://github.com/Mxmilu666/NyaBot.git
 ```
-3.在/inc/config.php中配置WS服务器和Key
+3.在/inc/config.php中配置WS服务器和Token
 
 4.执行
 ``` code
