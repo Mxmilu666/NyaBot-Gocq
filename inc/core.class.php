@@ -1,6 +1,31 @@
 <?php
-//发送群聊普通信息
-function group_send_msg($client,$group_id,$message){
+use Swoole\Coroutine\Http\Client;
+class inc{
+    private $ip;
+    private $port;
+    private $token;
+    private $op_data;
+    private $op_message;
+    public function __construct($ip,$port,$token){
+        $this->ip = $ip;
+        $this->port = $port;
+        $this->token = $token;
+    }
+    public function connect_ws()
+    {
+        $client = new Client($this->ip, $this->port);
+        $client->setHeaders([
+            'Authorization' => 'Bearer ' . $this->token
+        ]);
+        $client->upgrade('/');
+        return $this->op_data=$client;
+    }
+    public function update_op_message($op_data){
+        $this->op_message=$op_data;
+    }
+    //发送群聊普通信息
+    public function group_send_msg($group_id,$message){
+    $op_data=$this->op_message;
     $sendjson = json_encode(
             [
                 'action' => 'send_group_msg',
@@ -11,11 +36,12 @@ function group_send_msg($client,$group_id,$message){
                     ]
             ]
         );
-    $client->push($message);
+    $this->op_data->push($sendjson);
     echo '[' . date('Y.n.j-H:i:s') . ']' . '[' . $group_id . ']'. '发送群聊消息：' . $message . PHP_EOL;
 }
 //发送群聊回复信息
-function group_send_reply($client,$group_id,$message_id,$message) {
+    public function group_send_reply($group_id,$message) {
+    $op_data=$this->op_message;
     $sendjson = json_encode([
         'action' => 'send_msg',
         'params' => [
@@ -30,10 +56,11 @@ function group_send_reply($client,$group_id,$message_id,$message) {
             [
                 'type' => 'reply',
                 'data' => array(
-                    'id' => $message_id)
+                    'id' => $op_data['message_id'])
             ] ]
         ]
     ]);
-        $client->push($sendjson);
+        $this->op_data->push($sendjson);
         echo '[' . date('Y.n.j-H:i:s') . ']' . '[' . $group_id . ']'. '发送群聊回复消息：' . $message . PHP_EOL;
+}
 }

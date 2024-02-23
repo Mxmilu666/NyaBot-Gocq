@@ -5,7 +5,8 @@ if ($op_data['message'] === '/test') {
 
     if (@$Info['1'] == NULL) {
         if ($Info['0'] == $op_data['message']) {
-            group_send_msg($client,$op_data['group_id'],"你好呀");
+            $inc->group_send_reply($op_data['group_id'],"你好呀");
+            $inc->group_send_msg($op_data['group_id'],"你好呀");
         }
     }
 }

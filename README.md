@@ -43,7 +43,7 @@ git clone https://github.com/Mxmilu666/NyaBot.git
 |-- bot.php //主程序
 |-- inc
 |   |-- config.php //配置文件
-|   `-- core.class.php //核心函数
+|   `-- core.class.php //核心参数库
 |-- class
 |   `-- example.class.php //全局函数示例
 `-- plugins
@@ -56,6 +56,7 @@ git clone https://github.com/Mxmilu666/NyaBot.git
 
 ## 🫂感谢
 [Swoole](https://www.swoole.com/)提供的高性能PHP协程框架
-[1626424216](https://github.com/1626424216)提供的大部分框架代码
+
+[1626424216](https://github.com/1626424216)提供的大部分框架代码和思路
 
 ### 这个项目只是开源我正在使用的框架,不一定可以满足所有人的需求,但是欢迎大家Pr(逃
