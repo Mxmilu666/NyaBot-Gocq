@@ -24,11 +24,13 @@ _✨ 基于PHP以及 [Swoole](https://www.swoole.com/) 的 [go-cqhttp](https://g
 
 ## ⚙️快速部署
 1.下载[swoole-cli](https://www.swoole.com/download)对应的系统版本
+
 2.将此仓库Clone/Download下来
 ``` code
 git clone https://github.com/Mxmilu666/NyaBot.git
 ```
 3.在/inc/config.php中配置WS服务器和Key
+
 4.执行
 ``` code
 ./swoole-cli bot.php
