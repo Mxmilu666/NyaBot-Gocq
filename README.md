@@ -11,14 +11,18 @@ _✨ 基于PHP以及 [Swoole](https://www.swoole.com/) 的 [go-cqhttp](https://g
 
 - [x] 发送群聊回复消息
 
-- More TODO...
+- More TODO...(咕咕咕)
 
 </details>
 
 <details>
 <summary>已实现私聊接口</summary>
 
-- TODO(咕咕咕)
+- [x] 发送私聊消息
+
+- [x] 发送私聊回复消息
+
+- More TODO...(咕咕咕)
 
 </details>
 
