@@ -31,7 +31,7 @@ run(function (){
             echo "[NyaBot]网络怎么中断了,但是正在重连捏!".PHP_EOL;
             $client->close();
             Swoole\Coroutine\System::sleep(5);
-            $client=connect_ws();
+            $client = $inc->connect_ws();
             //break;
         } else {
             $op_data = json_decode($ws_data->data, true);
@@ -45,7 +45,7 @@ run(function (){
                     case 'request'://好友通知
                         break;
                     case 'message'://接收消息
-                        $inc->update_op_message($op_data);
+                        //$inc->update_op_message($op_data);
                         switch ($op_data['message_type']) {
                             case 'private'://私聊消息
                                 echo '[' . date('Y.n.j-H:i:s') . ']' . '[' . $op_data['user_id'] . ']' . '收到私聊消息：' . $op_data['message'] . PHP_EOL;
@@ -56,6 +56,7 @@ run(function (){
                         }
                         Coroutine::create(function () use ($client, $op_data,$inc) {
                             foreach (glob('./plugins/*.php') as $file) {
+                                $inc->update_op_message($op_data,Swoole\Coroutine::getCid());
                                 $file = explode('/', $file)['2'];
                                 require './plugins/' . $file;
                             }

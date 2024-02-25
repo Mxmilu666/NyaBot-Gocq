@@ -5,7 +5,7 @@ class inc{
     private $port;
     private $token;
     private $op_data;
-    private $op_message;
+    private $op_message = [];
     public function __construct($ip,$port,$token){
         $this->ip = $ip;
         $this->port = $port;
@@ -20,12 +20,12 @@ class inc{
         $client->upgrade('/');
         return $this->op_data=$client;
     }
-    public function update_op_message($op_data){
-        $this->op_message=$op_data;
+    public function update_op_message($op_data,$uid){
+        $this->op_message[$uid] = $op_data;
     }
     //发送群聊信息
     public function group_send_msg($group_id,$message){
-    $op_data=$this->op_message;
+    $op_data=$this->op_message[swoole\Coroutine::getuid()];
     $sendjson = json_encode(
             [
                 'action' => 'send_group_msg',
@@ -41,7 +41,7 @@ class inc{
 }
     //发送群聊回复信息
     public function group_send_reply($group_id,$message) {
-    $op_data=$this->op_message;
+    $op_data=$this->op_message[swoole\Coroutine::getuid()];
     $sendjson = json_encode([
         'action' => 'send_msg',
         'params' => [
@@ -65,7 +65,7 @@ class inc{
 }
     //发送私聊信息
     public function private_send_msg($user_id,$message){
-    $op_data=$this->op_message;
+    $op_data=$this->$this->op_message[swoole\Coroutine::getuid()];
     $sendjson = json_encode(
             [
                 'action' => 'send_private_msg',
@@ -81,7 +81,7 @@ class inc{
 }
     //发送私聊回复信息
     public function private_send_reply($user_id,$message) {
-        $op_data=$this->op_message;
+        $op_data=$this->$this->op_message[swoole\Coroutine::getuid()];
         $sendjson = json_encode([
             'action' => 'send_msg',
             'params' => [
