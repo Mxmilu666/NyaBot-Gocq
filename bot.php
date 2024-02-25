@@ -12,7 +12,7 @@ $list = glob('./class/*.class.php');
         $file = explode('/', $file)['2'];
         require './class/' . $file;
     }
-echo"[NyaBot]全局函数加载成功捏!". PHP_EOL;
+echo"[NyaBot]全局函数加载成功!". PHP_EOL;
 echo"[NyaBot]正在连接WS服务器ing..". PHP_EOL;
 run(function (){
     include './inc/config.php';
@@ -21,9 +21,9 @@ run(function (){
     if ($client->getStatusCode() == '403') {
         echo "[NyaBot]Toekn怎么错误了捏：" . $client->getStatusCode() . '/' . $client->errCode.PHP_EOL;
     } else if ($client->getStatusCode() == '-1' or $client->errCode == '114') {
-        echo "[NyaBot]呜呜呜网络连接失败了呢".PHP_EOL;
+        echo "[NyaBot]网络连接失败了呢,检查一下吧".PHP_EOL;
     } else {
-        echo "[NyaBot]连接ws服务端成功捏：" . ' 你的BOT_QQ是：' . json_decode(@$client->recv()->data, true)['self_id'] . "捏".PHP_EOL;
+        echo "[NyaBot]连接ws服务端成功捏：" . ' 你的BOT_QQ是：' . json_decode(@$client->recv()->data, true)['self_id'] .PHP_EOL;
     }
     while ($client->getStatusCode() != '403') {
         $ws_data = $client->recv();
