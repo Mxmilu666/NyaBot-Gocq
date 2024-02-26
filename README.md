@@ -1,6 +1,6 @@
 # NyaBot
 
-_✨ 基于PHP以及 [Swoole](https://www.swoole.com/) 的 [go-cqhttp](https://github.com/Mrs4s/go-cqhttp/) 简单WebSocketSDK ✨_  
+_✨ 一个简单,极易上手的基于PHP以及 [Swoole](https://www.swoole.com/) 的 [go-cqhttp](https://github.com/Mrs4s/go-cqhttp/) 简单WebSocketSDK ✨_  
 
 ## 🎈已经实现接口
 
