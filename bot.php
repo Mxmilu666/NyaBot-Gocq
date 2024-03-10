@@ -4,31 +4,31 @@ use Swoole\Coroutine\Http\Client;
 use function Swoole\Coroutine\run;
 date_default_timezone_set('Asia/Shanghai');
 require './inc/config.php';
-echo"[NyaBot]欢迎使用NyaBot捏!". PHP_EOL;
-echo"[NyaBot]Github开源地址:https://github.com/Mxmilu666/NyaBot". PHP_EOL;
+echo"[NyaBot-Gocq]欢迎使用NyaBot-Gocq!". PHP_EOL;
+echo"[NyaBot-Gocq]Github开源地址:https://github.com/Mxmilu666/NyaBot-Gocq". PHP_EOL;
 require './inc/core.class.php';
 $list = glob('./class/*.class.php');
     foreach ($list as $file) {
         $file = explode('/', $file)['2'];
         require './class/' . $file;
     }
-echo"[NyaBot]全局函数加载成功!". PHP_EOL;
-echo"[NyaBot]正在连接WS服务器ing..". PHP_EOL;
+echo"[NyaBot-Gocq]全局函数加载成功!". PHP_EOL;
+echo"[NyaBot-Gocq]正在连接WS服务器ing..". PHP_EOL;
 run(function (){
     include './inc/config.php';
     $inc = new inc($config['ip'], $config['port'], $config['token']);
     $client = $inc->connect_ws();
     if ($client->getStatusCode() == '403') {
-        echo "[NyaBot]Toekn怎么错误了捏：" . $client->getStatusCode() . '/' . $client->errCode.PHP_EOL;
+        echo "[NyaBot-Gocq]Toekn怎么错误,检查一下吧：" . $client->getStatusCode() . '/' . $client->errCode.PHP_EOL;
     } else if ($client->getStatusCode() == '-1' or $client->errCode == '114') {
-        echo "[NyaBot]网络连接失败了呢,检查一下吧".PHP_EOL;
+        echo "[NyaBot-Gocq]网络连接失败了呢,检查一下吧".PHP_EOL;
     } else {
-        echo "[NyaBot]连接ws服务端成功捏：" . ' 你的BOT_QQ是：' . json_decode(@$client->recv()->data, true)['self_id'] .PHP_EOL;
+        echo "[NyaBot-Gocq]连接ws服务端成功：" . ' 你的BOT_QQ是：' . json_decode(@$client->recv()->data, true)['self_id'] .PHP_EOL;
     }
     while ($client->getStatusCode() != '403') {
         $ws_data = $client->recv();
         if (empty($ws_data)) {
-            echo "[NyaBot]网络怎么中断了,但是正在重连捏!".PHP_EOL;
+            echo "[NyaBot-Gocq]网络怎么中断了,但是正在重连!".PHP_EOL;
             $client->close();
             Swoole\Coroutine\System::sleep(5);
             $client = $inc->connect_ws();

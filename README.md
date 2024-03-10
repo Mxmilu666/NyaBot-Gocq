@@ -1,4 +1,4 @@
-# NyaBot
+# NyaBot-Gocq
 
 _✨ 一个简单,极易上手的基于PHP以及 [Swoole](https://www.swoole.com/) 的 [go-cqhttp](https://github.com/Mrs4s/go-cqhttp/) 简单WebSocketSDK ✨_  
 
@@ -31,7 +31,7 @@ _✨ 一个简单,极易上手的基于PHP以及 [Swoole](https://www.swoole.com
 
 2.将此仓库Clone/Download下来
 ``` code
-git clone https://github.com/Mxmilu666/NyaBot.git
+git clone https://github.com/Mxmilu666/NyaBot-Gocq.git
 ```
 3.在/inc/config.php中配置WS服务器和Token
 
